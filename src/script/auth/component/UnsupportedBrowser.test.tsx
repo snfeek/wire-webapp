@@ -38,7 +38,7 @@ class UnsupportedBrowserPage {
   constructor(
     store: MockStoreEnhanced<TypeUtil.RecursivePartial<RootState>, ThunkDispatch<RootState, Api, AnyAction>>,
     props?: UnsupportedBrowserProps,
-    history?: History<any>,
+    history?: History,
   ) {
     this.driver = mountComponent(<UnsupportedBrowser {...props} />, store, history);
   }
