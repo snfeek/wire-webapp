@@ -1,0 +1,48 @@
+{
+  "browser": {
+    "./src/main/cryptography/AssetCryptography/crypto.node": "./src/main/cryptography/AssetCryptography/crypto.browser.js"
+  },
+  "dependencies": {
+    "@types/long": "4.0.1",
+    "@types/node": "~14",
+    "@wireapp/api-client": "19.2.3",
+    "@wireapp/cryptobox": "12.8.0",
+    "bazinga64": "5.10.0",
+    "hash.js": "1.1.7",
+    "http-status-codes": "2.1.4",
+    "logdown": "3.3.1",
+    "long": "4.0.0",
+    "protobufjs": "6.11.2",
+    "uuidjs": "4.2.8"
+  },
+  "description": "Wire for Web's communication core.",
+  "files": [
+    "src/main/**/*.d.ts",
+    "src/main/**/*.js",
+    "!src/main/**/*test*.js",
+    "!src/main/**/*test*.ts"
+  ],
+  "license": "GPL-3.0",
+  "main": "src/main/Account",
+  "name": "@wireapp/core",
+  "repository": "https://github.com/wireapp/wire-web-packages/tree/main/packages/core",
+  "scripts": {
+    "build": "yarn build:node && yarn build:browser",
+    "build:browser": "webpack --progress",
+    "build:node": "tsc",
+    "clean": "rimraf .tmp \"src/main/{!(*.test*).js,*.js.map,*.d.ts}\" \"src/main/test/{*.js.map,*.d.ts}\" \"src/main/!(test)/{!(*.test*).js,*.js.map,*.d.ts}\"",
+    "coverage": "cross-env JASMINE_CONFIG_PATH=src/test/node/support/jasmine.json istanbul cover --report html ../../node_modules/jasmine/bin/jasmine.js",
+    "demo:composite": "cross-env NODE_DEBUG=@wireapp* ts-node src/demo/composite.ts",
+    "demo:sendCounter": "cross-env NODE_DEBUG=@wireapp* ts-node src/demo/sendCounter.ts",
+    "dist": "yarn clean && yarn build",
+    "start": "yarn dist && node index.js",
+    "start:echo": "cross-env NODE_DEBUG=@wireapp/core* node src/demo/echo.js",
+    "start:sender": "cross-env NODE_DEBUG=@wireapp/core* node src/demo/sender.js",
+    "test": "yarn test:node && yarn test:browser",
+    "test:browser": "webpack --mode=development && karma start",
+    "test:project": "yarn dist && yarn test",
+    "test:node": "nyc jasmine --config=jasmine.json"
+  },
+  "version": "27.0.3",
+  "yalcSig": "def09dffff2828089dd1364bd793939b"
+}
