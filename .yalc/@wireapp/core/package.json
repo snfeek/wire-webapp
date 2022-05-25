@@ -44,5 +44,5 @@
     "test:node": "nyc jasmine --config=jasmine.json"
   },
   "version": "27.0.3",
-  "yalcSig": "def09dffff2828089dd1364bd793939b"
+  "yalcSig": "e5c60b67ebd0408fe996456e25aa50c5"
 }

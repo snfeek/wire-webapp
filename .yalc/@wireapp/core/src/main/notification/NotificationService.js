@@ -159,7 +159,7 @@ class NotificationService extends events_1.EventEmitter {
         switch (payload.type) {
             case conversation_1.PayloadBundleType.ASSET: {
                 const assetContent = payload.content;
-                const isMetaData = !!assetContent && !!assetContent.original && !assetContent.uploaded;
+                const isMetaData = !!(assetContent === null || assetContent === void 0 ? void 0 : assetContent.original) && !(assetContent === null || assetContent === void 0 ? void 0 : assetContent.uploaded);
                 const isAbort = !!assetContent.abortReason || (!assetContent.original && !assetContent.uploaded);
                 if (isMetaData) {
                     payload.type = conversation_1.PayloadBundleType.ASSET_META;

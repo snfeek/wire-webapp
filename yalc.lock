@@ -2,7 +2,7 @@
   "version": "v1",
   "packages": {
     "@wireapp/core": {
-      "signature": "def09dffff2828089dd1364bd793939b",
+      "signature": "e5c60b67ebd0408fe996456e25aa50c5",
       "file": true,
       "replaced": "27.0.0"
     }

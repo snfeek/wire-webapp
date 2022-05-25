@@ -292,7 +292,7 @@ class Account extends events_1.EventEmitter {
             const { mappedEvent } = payload;
             switch (mappedEvent === null || mappedEvent === void 0 ? void 0 : mappedEvent.type) {
                 case conversation_1.PayloadBundleType.TIMER_UPDATE: {
-                    const { data: { message_timer }, conversation, } = payload;
+                    const { data: { message_timer }, conversation, } = payload.event;
                     const expireAfterMillis = Number(message_timer);
                     this.service.conversation.messageTimer.setConversationLevelTimer(conversation, expireAfterMillis);
                     break;
