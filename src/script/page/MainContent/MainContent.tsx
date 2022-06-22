@@ -42,6 +42,7 @@ import {WebAppEvents} from '@wireapp/webapp-events';
 import '../message-list/InputBarControls';
 
 type LeftSidebarProps = {
+  userState: UserState;
   contentViewModel: ContentViewModel;
   conversationState?: ConversationState;
 };
@@ -54,9 +55,12 @@ const Animated: React.FC<{children: React.ReactNode}> = ({children, ...rest}) =>
 };
 
 const MainContent: React.FC<LeftSidebarProps> = ({
+  userState = container.resolve(UserState),
   contentViewModel,
   conversationState = container.resolve(ConversationState),
 }) => {
+  const {self: selfUser} = useKoSubscribableChildren(userState, ['self']);
+  const {accent_id: accentId} = useKoSubscribableChildren(selfUser, ['accent_id']);
   const {state} = useKoSubscribableChildren(contentViewModel, ['state']);
   const {activeConversation} = useKoSubscribableChildren(conversationState, ['activeConversation']);
   const repositories = contentViewModel.repositories;
